@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Quiz Platform — онлайн тест платформасы">
+    <title>Quiz Platform | Онлайн тесттер</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            Quiz<span>Platform</span>
+        </a>
+
+        <div class="header-actions">
+            <button id="themeToggle" class="theme-btn" type="button"
+                aria-label="Тақырыпты ауыстыру">🌙</button>
+
+            <a href="admin.html" class="btn btn-outline">
+                Admin Panel
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero container">
+        <p class="eyebrow">ONLINE QUIZ PLATFORM</p>
+
+        <h1>Біліміңді тексеруге дайынсың ба?</h1>
+
+        <p>
+            Онлайн тесттерді орында, нәтижелеріңді көр
+            және біліміңді дамыт.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#tests" class="btn btn-primary">
+                Тесттерді көру
+            </a>
+
+            <a href="admin.html" class="btn btn-outline">
+                Admin Panel
+            </a>
+        </div>
+    </section>
+
+    <section id="tests" class="container">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">ТЕСТТЕР ЖИНАҒЫ</p>
+                <h2>Қолжетімді тесттер</h2>
+                <p class="muted">Өзіңе қажетті тестті таңда.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Тест атауын іздеу..."
+                autocomplete="off"
+            >
+        </div>
+
+        <div id="quizGrid" class="quiz-grid"></div>
+
+        <div id="emptyState" class="empty-state" hidden>
+            Әзірге жарияланған тест жоқ.
+        </div>
+
+        <div id="noResults" class="empty-state" hidden>
+            Іздеу бойынша тест табылмады.
+        </div>
+    </section>
+</main>
+
+<footer class="container" style="padding:40px 0;text-align:center;">
+    <p class="muted">© 2026 Quiz Platform. Барлық құқық қорғалған.</p>
+</footer>
+
+<script src="js/database.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

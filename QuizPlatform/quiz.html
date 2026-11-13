@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Quiz Platform — тест тапсыру">
+    <title>Тест | Quiz Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">
+            Quiz<span>Platform</span>
+        </a>
+
+        <div class="header-actions">
+            <button id="themeToggle" class="theme-btn"
+                type="button" aria-label="Тақырыпты ауыстыру">🌙</button>
+
+            <a href="index.html" class="btn btn-outline">
+                Шығу
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="quiz-container">
+
+    <!-- LOADING -->
+
+    <section id="loadingState" class="loading-box">
+        <h2>Тест жүктелуде...</h2>
+        <p class="muted">Күте тұрыңыз.</p>
+    </section>
+
+    <!-- ERROR -->
+
+    <section id="errorState" class="error-box" hidden>
+        <h2>Тест ашылмады</h2>
+        <p id="errorMessage" class="muted">
+            Қате пайда болды.
+        </p>
+
+        <a href="index.html" class="btn btn-primary"
+            style="margin-top:20px;">
+            Басты бетке оралу
+        </a>
+    </section>
+
+    <!-- QUIZ -->
+
+    <section id="quizContent" hidden>
+
+        <div class="quiz-top">
+            <div>
+                <h2 id="quizTitle">Тест атауы</h2>
+                <p id="quizDescription" class="muted"></p>
+            </div>
+
+            <span id="questionCounter" class="question-number">
+                1 / 10
+            </span>
+        </div>
+
+        <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="quiz-card-main">
+
+            <p id="questionNumber" class="question-number">
+                Сұрақ 1
+            </p>
+
+            <h1 id="questionText" class="quiz-question">
+                Сұрақ мәтіні
+            </h1>
+
+            <div id="answersList" class="answers-list">
+            </div>
+
+            <button
+                id="nextQuestionBtn"
+                class="btn btn-primary btn-block next-btn"
+                type="button"
+                hidden>
+                Следующий вопрос →
+            </button>
+
+            <p id="answerFeedback" class="message"
+                aria-live="polite"></p>
+
+        </div>
+    </section>
+
+    <!-- RESULT -->
+
+    <section id="resultContent" hidden>
+        <div class="result-card">
+
+            <p class="eyebrow">ТЕСТ АЯҚТАЛДЫ</p>
+
+            <h1>Нәтижеңіз</h1>
+
+            <div id="resultScore" class="result-score">
+                0 / 0
+            </div>
+
+            <p id="resultPercentage" class="muted">
+                0% дұрыс жауап
+            </p>
+
+            <p id="resultMessage" style="margin-top:15px;">
+                Тест аяқталды.
+            </p>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:25px;">
+                <button id="restartBtn"
+                    class="btn btn-primary"
+                    type="button">
+                    Қайта тапсыру
+                </button>
+
+                <a href="index.html"
+                    class="btn btn-outline">
+                    Басты бет
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<script src="js/database.js"></script>
+<script src="js/quiz.js"></script>
+
+</body>
+</html>

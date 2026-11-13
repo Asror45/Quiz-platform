@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Admin Panel | Quiz Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">Quiz<span>Platform</span></a>
+        <div class="header-actions">
+            <button id="themeToggle" class="theme-btn" type="button">🌙</button>
+            <a href="index.html" class="btn btn-outline">Басты бет</a>
+        </div>
+    </div>
+</header>
+
+<main class="container admin-container">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">БАСҚАРУ ЖҮЙЕСІ</p>
+            <h1>Admin Panel</h1>
+            <p class="muted">Тесттер мен сұрақтарды басқару</p>
+        </div>
+    </div>
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <span>Барлық тест</span>
+            <strong id="totalQuizzes">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>Барлық сұрақ</span>
+            <strong id="totalQuestions">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>Жарияланған тест</span>
+            <strong id="publishedQuizzes">0</strong>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Жаңа тест құру</h2>
+
+        <div class="form-group">
+            <label for="quizTitle">Тест атауы</label>
+            <input id="quizTitle" type="text" placeholder="Мысалы: Қазақстан тарихы">
+        </div>
+
+        <div class="form-group">
+            <label for="quizDescription">Тест сипаттамасы</label>
+            <textarea id="quizDescription" rows="3" placeholder="Тест туралы қысқаша ақпарат"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="quizIcon">Тест белгішесі</label>
+            <input id="quizIcon" type="text" maxlength="8" value="📝">
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <h2>Сұрақ қосу</h2>
+                <p class="muted">Дұрыс жауапты A нұсқасына енгіз</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="questionInput">Сұрақ мәтіні</label>
+            <textarea id="questionInput" rows="3" placeholder="Сұрақты енгіз..."></textarea>
+        </div>
+
+        <div class="answers-grid">
+            <div class="form-group">
+                <label for="answerA">A нұсқасы — дұрыс жауап</label>
+                <input id="answerA" type="text" placeholder="A жауабы">
+            </div>
+
+            <div class="form-group">
+                <label for="answerB">B нұсқасы</label>
+                <input id="answerB" type="text" placeholder="B жауабы">
+            </div>
+
+            <div class="form-group">
+                <label for="answerC">C нұсқасы</label>
+                <input id="answerC" type="text" placeholder="C жауабы">
+            </div>
+
+            <div class="form-group">
+                <label for="answerD">D нұсқасы</label>
+                <input id="answerD" type="text" placeholder="D жауабы">
+            </div>
+
+            <div class="form-group">
+                <label for="answerE">E нұсқасы</label>
+                <input id="answerE" type="text" placeholder="E жауабы">
+            </div>
+        </div>
+
+        <button id="addQuestionBtn" class="btn btn-primary" type="button">
+            + Сұрақ қосу
+        </button>
+
+        <div class="divider"></div>
+
+        <div class="import-area">
+            <h3>Файлдан сұрақ импорттау</h3>
+            <p class="muted">PDF, DOCX немесе TXT файлдарын таңда.</p>
+
+            <input
+                type="file"
+                id="importFile"
+                accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
+                hidden
+            >
+
+            <button id="chooseFileBtn" class="btn btn-outline" type="button">
+                📁 Файл таңдау
+            </button>
+
+            <p id="selectedFileName" class="muted">Файл таңдалмады</p>
+            <p id="importStatus" class="message" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <h2>Сұрақтар тізімі</h2>
+                <p class="muted">Қосылған сұрақтарды осы жерден басқарасың</p>
+            </div>
+            <strong id="questionCount">0 сұрақ</strong>
+        </div>
+
+        <div id="questionsList" class="questions-list">
+            <div class="empty-state">Әзірге сұрақ қосылған жоқ.</div>
+        </div>
+    </section>
+
+    <section class="panel publish-panel">
+        <h2>Тестті жариялау</h2>
+        <p class="muted">Тестті сақтап, жарияланған тесттер тізіміне қос.</p>
+        <button id="publishBtn" class="btn btn-primary btn-block" type="button">
+            Тестті жариялау
+        </button>
+        <p id="adminMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+        <h2>Сақталған тесттер</h2>
+        <div id="savedQuizzes" class="saved-quizzes">
+            <div class="empty-state">Әзірге тест жоқ.</div>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+<script src="js/database.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>
